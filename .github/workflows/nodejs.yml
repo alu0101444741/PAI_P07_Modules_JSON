@@ -1,0 +1,45 @@
+name: CI for testing
+
+on: # when this action should be triggered?
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs: # jobs are made of steps
+  build:
+    # Define the OS our workflow should run on
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      # To test across multiple language versions
+      matrix:
+        node-version: [16.x]
+        os: [ubuntu-latest]
+
+    steps: # Clone the repo. See https://github.com/actions/checkout
+    - uses: actions/checkout@v2
+    # Example of using an environment variable
+    - name: Use Node.js ${{ matrix.node-version }} 
+      uses: actions/setup-node@v1 # Install node. See https://github.com/actions/setup-node
+      with:
+        node-version: ${{ matrix.node-version }}
+    # Install a project with a clean slate
+    - name: Install dependencies
+      run: npm install
+
+    - run: npm i
+    - run: npm test
+
+    - name: Setup coverage tool
+      run: curl -Os https://uploader.codecov.io/latest/linux/codecov
+
+    - name: Grant permissions
+      run: chmod +x codecov
+
+    - name: Run code coverage
+      run: ./codecov -t 60354f11-469f-413a-8423-555b61c66fd8
+    
+      # Environment variables
+      env:
+        CI: true
