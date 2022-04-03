@@ -1,0 +1,37 @@
+{
+  "name": "p07-modules-json",
+  "version": "1.0.0",
+  "description": "PAI Lab assignment #07",
+  "devDependencies": {
+    "@babel/core": "^7.17.4",
+    "@exercism/eslint-config-javascript": "^0.6.0",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^16.11.25",
+    "babel-jest": "^27.5.1",
+    "core-js": "^3.21.1",
+    "eslint": "^8.9.0",
+    "jest": "^27.5.1"
+  },
+  "scripts": {
+    "test": "jest --verbose",
+    "watch": "jest --watchAll --verbose",
+    "coverage": "jest --coverage --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ULL-ESIT-PAI-2021-2022/2021-2022-PAI-P07-Modules-JSON.git"
+  },
+  "keywords": [
+    "PAI",
+    "Javascript",
+    "Lab",
+    "JSON",
+    "Modules"
+  ],
+  "author": "F de Sande",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ULL-ESIT-PAI-2021-2022/2021-2022-PAI-P06-Modules-JSON/issues"
+  },
+  "homepage": "https://github.com/ULL-ESIT-PAI-2021-2022/2021-2022-PAI-P06-Modules-JSON#readme"
+}
