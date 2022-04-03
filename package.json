@@ -9,17 +9,36 @@
     "@types/node": "^16.11.25",
     "babel-jest": "^27.5.1",
     "core-js": "^3.21.1",
-    "eslint": "^8.9.0",
-    "jest": "^27.5.1"
+    "eslint": "^8.11.0",
+    "jest": "^27.5.1",
+    "commander": "^7.1.0",
+    "escodegen": "^1.14.3",
+    "espree": "^9.3.1",
+    "chai": "latest",
+    "jison": "latest",
+    "jsdoc-to-markdown": "^7.1.1",
+    "nyc": "latest"
   },
   "scripts": {
     "test": "jest --verbose",
     "watch": "jest --watchAll --verbose",
-    "coverage": "jest --coverage --verbose"
+    "coverage": "jest --coverage --verbose",
+    "start": "node web-server/app.js"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "./code/*/src/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "lines": 90
+      }
+    }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ULL-ESIT-PAI-2021-2022/2021-2022-PAI-P07-Modules-JSON.git"
+    "url": "git+https://github.com/ULL-ESIT-PAI-2021-2022/2021-2022-pai-p07-modules-json-alu0101444741"
   },
   "keywords": [
     "PAI",
@@ -28,10 +47,11 @@
     "JSON",
     "Modules"
   ],
-  "author": "F de Sande",
+  "author": "Roberto Carrazana Pernía",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ULL-ESIT-PAI-2021-2022/2021-2022-PAI-P06-Modules-JSON/issues"
   },
-  "homepage": "https://github.com/ULL-ESIT-PAI-2021-2022/2021-2022-PAI-P06-Modules-JSON#readme"
+  "homepage": "https://github.com/ULL-ESIT-PAI-2021-2022/2021-2022-PAI-P06-Modules-JSON#readme",
+  "type": "module"
 }
