@@ -7,8 +7,9 @@
   * @author Roberto Carrazana Pernía
   * @since March 29 2022
   * @desc Put quotes on object fields name
-* @module fix-json
+  * @module fix-json
   */
+ 
  'use strict';
 
  import { createReadStream } from 'fs';
@@ -27,22 +28,18 @@ async function addQuotes (fileName) {
   if (process.argv[2] === undefined) {
     throw new Error('La entrada de este programa requiere un fichero.\nEjecútelo de la siguiente manera: node fix-json.js fichero.txt');
   }
-
   let splitLine = NO_CHARACTER;
   let wholeDocument = NO_CHARACTER;
   let actualIndentation = 0;
 
   const fileStream = createReadStream(fileName);
-
   const rl = createInterface({
     input: fileStream,
     crlfDelay: Infinity
   });
-
   for await (const line of rl) {    
     if (line !== NO_CHARACTER) {
       splitLine = line.split(WHITESPACE);
-
       for (const word of splitLine) {
         if ((word === '{') || (word === '[')) {
           for (let i = 0; i < actualIndentation; ++i) wholeDocument += INDENTATION;
@@ -65,7 +62,6 @@ async function addQuotes (fileName) {
   }
   console.log(wholeDocument);
 }
-
 addQuotes(process.argv[2]).then(console.log, console.log(process.argv[2]));
 
 export default {addQuotes}

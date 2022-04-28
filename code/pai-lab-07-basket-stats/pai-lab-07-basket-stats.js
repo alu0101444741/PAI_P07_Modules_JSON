@@ -7,9 +7,10 @@
  * @author Roberto Carrazana Pernía
  * @since Apr 5 2022
  * @desc Show information about a NBA match
- *       
+ * @module basket-stats      
  */
 'use strict';
+import { fileURLToPath } from 'url';
 import information from '../match-info-retriever/match-info-retriever.js';
 const MATCH_INFORMATION = information.information;
 
@@ -65,7 +66,7 @@ function finalResult() {
 }
 
 /**
- * @desc Muestra por pantalla el jugador con mayor cantidad de rebotes del partido.
+ * @desc Muestra por pantalla el jugador con mayor cantidad de rebotes efectuados en el partido.
  * Esta cantidad se consigue sumando los rebotes defensivos y ofensivos.
  */
 function maximumRebounder() {
@@ -89,7 +90,6 @@ function maximumRebounder() {
   let guardName = '';
   let maximumPercentage = 0.0;
   let threePointersMade, threePointersAttempted;
-
   for (const player of MATCH_INFORMATION['players']) {
     if (player['positionShort'] !== 'G') continue;
 
@@ -110,7 +110,6 @@ function maximumRebounder() {
  */
  function playersWithAtLeastOneAssist() {
   let playersWithAssists = 0;
-
   for (const player of MATCH_INFORMATION['players']) {
     if (player['assists'] > 0) {
       ++ playersWithAssists;
@@ -127,7 +126,6 @@ function maximumRebounder() {
   let freeShotsPacers = 0;
   let freeShotsHawks = 0;
   let teamName = '';
-
   for (const player of MATCH_INFORMATION['players']) {
     if (player['teamName'] === 'Pacers') {
       freeShotsPacers += player['freeThrowsAttempted'];
@@ -147,7 +145,6 @@ function maximumRebounder() {
  function playersWithMoreTurnoversThanAssists() {
   let playersPacers = [];
   let playersHawks = [];
-
   for (const player of MATCH_INFORMATION['players']) {
     if (player['assists'] < player['turnovers']) {
       if (player['teamName'] === 'Pacers') {
@@ -169,7 +166,9 @@ function maximumRebounder() {
   }
 }
 
-main();
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main();
+}
 
 export {
   matchId,
