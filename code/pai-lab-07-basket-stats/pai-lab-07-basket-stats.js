@@ -9,9 +9,12 @@
  * @desc Show information about a NBA match
  * @module basket-stats      
  */
+
 'use strict';
+
 import { fileURLToPath } from 'url';
 import information from '../match-info-retriever/match-info-retriever.js';
+
 const MATCH_INFORMATION = information.information;
 
 function main() {
@@ -25,16 +28,12 @@ function main() {
   playersWithMoreTurnoversThanAssists();
 }
 
-/**
- * @desc Muestra por pantalla el identificador del partido.
- */
+/** @desc Muestra por pantalla el identificador del partido. */
 function matchId() {
   console.log('* Game ID:', MATCH_INFORMATION['id']);  
 }
 
-/**
- * @desc Muestra por pantalla las propiedades (nombre, dorsal, ...) de cada jugador.
- */
+/** @desc Muestra por pantalla las propiedades (nombre, dorsal, ...) de cada jugador. */
 function allPlayerProperties() {
   console.log('* Players properties:\n')
   for (const player of MATCH_INFORMATION['players']) {
